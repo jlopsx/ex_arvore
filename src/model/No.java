@@ -4,9 +4,10 @@ public class No {
     private int valor;
     private No esq, dir;
 
+    private int camada;
+
     public No(int valor) {
         this.valor = valor;
-        esq = dir = null;
     }
 
     public No getDir() {
@@ -31,5 +32,13 @@ public class No {
 
     public void setValor(int valor) {
         this.valor = valor;
+    }
+
+    public int getCamada() {
+        return camada;
+    }
+
+    public void setCamada(int camada) {
+        this.camada = camada;
     }
 }

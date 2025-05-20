@@ -23,6 +23,7 @@ public class Arvore {
     public void inserir(No novoNo)
     {
         raiz = inserirNo(raiz, novoNo);
+        atribuirCamadasRec(raiz, 0);
     }
 
     public void exibir()
@@ -181,6 +182,15 @@ public class Arvore {
         return atual.getValor();
 
 
+    }
+
+
+    private void atribuirCamadasRec(No atual, int camada) {
+        if (atual != null) {
+            atual.setCamada(camada);
+            atribuirCamadasRec(atual.getEsq(), camada + 1);
+            atribuirCamadasRec(atual.getDir(), camada + 1);
+        }
     }
 
 }
