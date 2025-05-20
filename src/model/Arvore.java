@@ -39,6 +39,7 @@ public class Arvore {
         {
             exibirArvore(atual.getEsq());
             System.out.println(atual.getValor());
+            System.out.println(atual.getCamada());
             exibirArvore(atual.getDir());
         }
     }
