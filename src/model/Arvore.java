@@ -1,8 +1,13 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class Arvore {
 
     private No raiz;
+    private static List<Integer> ordem = new ArrayList<>();
 
     private No inserirNo(No atual, No novoNo)
     {
@@ -126,16 +131,56 @@ public class Arvore {
 
     public void chamaRastreador(int num)
     {
-        rastreador(raiz, num);
+        System.out.println(rastreador(raiz, num));
     }
 
-    public int rastreador(No atual, int num)
+    private Integer rastreador(No atual, int num)
     {
+        if (atual == null)
+        {
+            return null;
+        }
+        System.out.println(atual.getValor());
         if (atual.getValor() == num)
         {
             return num;
         }
-        return 0;
+        if (rastreador(atual.getEsq(), num) != null)
+        {
+            return rastreador(atual.getEsq(), num);
+        }
+
+        return rastreador(atual.getDir(), num);
+
+    }
+
+    public void ordenaArvore()
+    {
+        ordem.clear();
+        ordem.add(raiz.getValor());
+        ordena(raiz);
+
+        Collections.sort(ordem);
+        for (int valores : ordem)
+        {
+            System.out.println(valores);
+        }
+    }
+
+    private int ordena(No atual)
+    {
+        if (atual.getDir() != null)
+        {
+           ordem.add(ordena(atual.getDir()));
+        }
+        if (atual.getEsq() !=null)
+        {
+            ordem.add(ordena(atual.getEsq()));
+        }
+
+        return atual.getValor();
+
+
     }
 
 }
